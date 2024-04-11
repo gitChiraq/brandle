@@ -1,18 +1,24 @@
 <template>
   <h1>{{ title }}</h1>
-  <GameBoard />
+  <GameBoard :receivedStringProp="receivedString" />
+  <KeyBoard @send-letter="receiveString"/>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
 import GameBoard from './components/GameBoard.vue'
+import KeyBoard from './components/KeyboardField.vue'
 
 export default {
   name: 'App',
-  components: { GameBoard },
+  components: { GameBoard, KeyBoard},
   data(){
     return{
-      title: 'brandle'
+      receivedString: ''
+    }
+  },
+  methods: {
+    receiveString(string){
+      this.receivedString = string;
     }
   }
 }
